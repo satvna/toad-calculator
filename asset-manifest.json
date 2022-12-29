@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/toad-calculator/static/css/main.98c06341.css",
+    "main.js": "/toad-calculator/static/js/main.1e5ba9e7.js",
+    "static/js/787.021ae036.chunk.js": "/toad-calculator/static/js/787.021ae036.chunk.js",
+    "index.html": "/toad-calculator/index.html",
+    "static/media/green-corner.svg": "/toad-calculator/static/media/green-corner.b313cedbdc76b27b09aeb6fe1840be6c.svg",
+    "main.98c06341.css.map": "/toad-calculator/static/css/main.98c06341.css.map",
+    "main.1e5ba9e7.js.map": "/toad-calculator/static/js/main.1e5ba9e7.js.map",
+    "787.021ae036.chunk.js.map": "/toad-calculator/static/js/787.021ae036.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.98c06341.css",
+    "static/js/main.1e5ba9e7.js"
+  ]
+}
