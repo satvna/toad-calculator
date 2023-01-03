@@ -3,7 +3,8 @@ import React, { Component, useEffect, useState} from 'react';
 
 function Score ({isUploaded}){
 
-  const [sleaze, setSleaze] = useState(-1);
+  const [sleaze, setSleaze] = useState(-1); //sleaze %
+  const [flavor, setFlavor] = useState(""); //flavor text
 
   const calculateSleaze = () =>{
     let myNum = Math.random();
@@ -38,6 +39,30 @@ function Score ({isUploaded}){
     }
   }
 
+  //determine flavor text
+  const flavorText = () =>{
+    switch(sleaze){
+      case 95:
+        return "There is only a 2% chance of finding a toad this polite in the wild. Congratulations!";
+        break;
+      case 96:
+        return "He looks very polite.";
+        break;
+      case 97:
+        return "Don't let the high number fool you- this is a remarkably polite toad.";
+        break;
+      case 98:
+          return "Get a load of that toad!";
+          break;
+      case 99:
+        return "This toad is average in its sleaziness.";
+        break;
+      default:
+        return "Wow 😳 What a toad!";
+    }
+    return this.flavor;
+  }
+
   const frogUploaded = () =>{
     if (isUploaded === true){
       calculateSleaze();
@@ -53,10 +78,11 @@ function Score ({isUploaded}){
       <div>
         <div style={{display: isUploaded ? 'block' : 'none'}}>
           <h2>Sleaze Score:</h2>
-          <h2>{sleaze}</h2>
+          <h2>{sleaze}%</h2>
+          <p>{flavorText()}</p>
         </div>
         <div style={{display: isUploaded ? 'none' : 'block'}}>
-          <h3>Upload a toad to determine its sleaziness.</h3>
+          <h3>Upload a toad to determine its level of sleaziness.</h3>
         </div>
       </div>
     )

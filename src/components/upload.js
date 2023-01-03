@@ -16,6 +16,7 @@ function Upload({ isUploaded,setUploaded, toad, setToad, setCropModalOpen }) {
       'image/*': []
     },
     onDrop: acceptedFiles => {
+      setToad([]);
       setToad(acceptedFiles.map(file => Object.assign(file, {
         preview: URL.createObjectURL(file),
       })));
@@ -59,9 +60,12 @@ function Upload({ isUploaded,setUploaded, toad, setToad, setCropModalOpen }) {
       </div>
 
     {/* Toad Display */}
-    <div className='frog-display' style={{display: isUploaded ? 'block' : 'none'}}>
-      {frogPreview}
-    </div>
+    <div className='drop-box' style={{display: isUploaded ? 'block' : 'none'}}>
+        <div {...getRootProps({ className: "dropzone" })}>
+          <input className="input-zone" {...getInputProps()} />
+            {frogPreview}
+        </div>
+      </div>
 
 
     </div>
