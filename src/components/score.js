@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState} from 'react';
 
 
-function Score ({isUploaded}){
+function Score (props){
 
   const [sleaze, setSleaze] = useState(-1); //sleaze %
   const [flavor, setFlavor] = useState(""); //flavor text
@@ -42,6 +42,9 @@ function Score ({isUploaded}){
   //determine flavor text
   const flavorText = () =>{
     switch(sleaze){
+      case (sleaze < 95):
+        return "This isn't just a polite toad. It is a holy toad.";
+        break;
       case 95:
         return "There is only a 2% chance of finding a toad this polite in the wild. Congratulations!";
         break;
@@ -63,25 +66,25 @@ function Score ({isUploaded}){
     return this.flavor;
   }
 
-  const frogUploaded = () =>{
-    if (isUploaded === true){
-      calculateSleaze();
-    }
-  }
-
+  //calculate sleaze on toad change
   useEffect(()=>{
-    frogUploaded();
-  }, [isUploaded]);
+    calculateSleaze();
+    setFlavor(flavorText());    
+  }, [props.toad]);
 
+  //set flavor text after sleaze is calculate
+  useEffect(()=>{
+    setFlavor(flavorText());    
+  }, [sleaze]);
 
     return(
       <div>
-        <div style={{display: isUploaded ? 'block' : 'none'}}>
+        <div style={{display: props.isUploaded ? 'block' : 'none'}}>
           <h2>Sleaze Score:</h2>
           <h2>{sleaze}%</h2>
-          <p>{flavorText()}</p>
+          <p>{flavor}</p>
         </div>
-        <div style={{display: isUploaded ? 'none' : 'block'}}>
+        <div style={{display: props.isUploaded ? 'none' : 'block'}}>
           <h3>Upload a toad to determine its level of sleaziness.</h3>
         </div>
       </div>

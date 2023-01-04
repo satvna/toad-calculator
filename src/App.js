@@ -12,6 +12,7 @@ import 'react-image-crop/dist/ReactCrop.css'
 import './App.css';
 import GreenCorner from './assets/green-corner.svg'
 
+//-------- Function for resizing screen for mobile --------
 function getWindowDimensions(){
   const { innerWidth: width, innerHeight: height } = window;
   return {
@@ -37,21 +38,16 @@ function getWindowDimensions(){
   return windowDimensions;
 }
 
+//-------- Function for rendering app --------
 function App() {
-  const [toad, setToad] = useState([]);
-  const [croppedToad, setCroppedToad] = useState([]);
-  const [cropModalOpen, setCropModalOpen] = React.useState(false);
 
-  const [crop, setCrop] = useState({aspect:1/1});
+  //props shared with upload and score
+  const [toad, setToad] = useState([]);
   const [isUploaded, setUploaded] = useState(false);
 
-  const handleOpen = () => setCropModalOpen(true);
-  const handleClose = () => setCropModalOpen(false);
 
+  //control web and mobile display
   const { height, width } = useWindowDimensions();
-
-
-
   const containerDivStyle = {
     height: height,
     width: width
@@ -64,20 +60,27 @@ function App() {
     width: width
   };
 
-  //Set width for mobile vs. web container
-  const frogDivStyle = width > 912 ? frogDivStyleWeb : frogDivStyleMobile;
+  const frogDivStyle = width > 1230 ? frogDivStyleWeb : frogDivStyleMobile;
 
+  //control modal
+  const [croppedToad, setCroppedToad] = useState([]);
+  const [cropModalOpen, setCropModalOpen] = React.useState(false);
+  const [crop, setCrop] = useState({aspect:1/1});
+  
+  const handleOpen = () => setCropModalOpen(true);
+  const handleClose = () => setCropModalOpen(false);
+  
   //Modal Styling
   const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #C9E265',
-    boxShadow: 24,
-    p: 4,
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #C9E265',
+        boxShadow: 24,
+        p: 4,
   };
 
   //Crop functionality
@@ -112,6 +115,7 @@ function App() {
     setCroppedToad(base64Image);
 };
 
+//-------- BEGIN APP RENDER --------
   return (
     <div className="site-container">
 
@@ -163,7 +167,7 @@ function App() {
 
         {/* DISPLAY SLEAZINESS SCORE */}
         <div className="score">
-          <Score isUploaded={isUploaded}/>
+          <Score key={isUploaded} toad={toad} isUploaded={isUploaded}/>
         </div>
       </div>
     </div>

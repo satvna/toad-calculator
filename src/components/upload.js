@@ -5,32 +5,26 @@ import 'react-image-crop/dist/ReactCrop.css'
 import '../App.css';
 import Modal from '@mui/material/Modal';
 
-function Upload({ isUploaded,setUploaded, toad, setToad, setCropModalOpen }) {
+function Upload(props) {
 
   // const [file, setFile] = useState([]);
-   const [crop, setCrop] = useState({ aspect: 1 / 1 });
+  const [crop, setCrop] = useState({ aspect: 1 / 1 });
 
-
-  const { getRootProps, getInputProps } = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone(
+    {
     accept: {
       'image/*': []
     },
-    onDrop: acceptedFiles => {
-      setToad([]);
-      setToad(acceptedFiles.map(file => Object.assign(file, {
+    onDrop: acceptedFiles  => {
+      props.setToad(acceptedFiles.map(file => Object.assign(file, {
         preview: URL.createObjectURL(file),
       })));
-      setCropModalOpen(true);
-      cropper();
+      props.setCropModalOpen(true);
+      props.setUploaded(true);
     }
   });
 
-  const cropper = () => {
-
-    setUploaded(true);
-  }
-
-  const frogPreview = toad.map(file => (
+  const frogPreview = props.toad.map(file => (
         <img
           src={file.preview}
           alt="frog"
@@ -41,14 +35,13 @@ function Upload({ isUploaded,setUploaded, toad, setToad, setCropModalOpen }) {
 
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
-    return () => toad.forEach(file => URL.revokeObjectURL(file.preview));
+    return () => props.toad.forEach(file => URL.revokeObjectURL(file.preview));
   }, []);
 
   return (
-
     <div className='upload-container'>
       {/* Toad Upload */}
-      <div className='drop-box' style={{display: isUploaded ? 'none' : 'block'}}>
+      <div className='drop-box' style={{display: props.isUploaded ? 'none' : 'block'}}>
         <div {...getRootProps({ className: "dropzone" })}>
           <input className="input-zone" {...getInputProps()} />
           <div className="text-center">
@@ -60,9 +53,10 @@ function Upload({ isUploaded,setUploaded, toad, setToad, setCropModalOpen }) {
       </div>
 
     {/* Toad Display */}
-    <div className='drop-box' style={{display: isUploaded ? 'block' : 'none'}}>
+    <div className='drop-box' style={{display: props.isUploaded ? 'block' : 'none'}}>
         <div {...getRootProps({ className: "dropzone" })}>
           <input className="input-zone" {...getInputProps()} />
+          <div className='scanner-animation'></div>
             {frogPreview}
         </div>
       </div>
