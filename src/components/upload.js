@@ -25,20 +25,19 @@ function Upload(props) {
     }
   });
 
-  const frogPreview = props.toad.map(file => (
-        <img
-          src={file.preview}
-          alt="frog"
-          key= {file.preview}
-          // Revoke data uri after image is loaded
-          onLoad={() => { URL.revokeObjectURL(file.preview) }}
-        />
-  ));
+  const loader = () =>{
+    
+  }
 
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
     return () => props.toad.forEach(file => URL.revokeObjectURL(file.preview));
   }, []);
+
+  //call loading animation after image is cropped
+  useEffect(() => {
+    loader();
+  }, [props.isCropped]);
 
   return (
     <div className='upload-container'>
@@ -56,9 +55,12 @@ function Upload(props) {
 
     {/* Toad Display */}
     <div className='drop-box' style={{display: props.isCropped ? 'block' : 'none'}}>
+      <div className='scanner-animation'>
+        <div className='scanner-bar'></div>
+      </div>
+
         <div {...getRootProps({ className: "dropzone" })}>
           <input className="input-zone" {...getInputProps()} />
-          <div className='scanner-animation'></div>
             <img
             src={props.croppedImage}
             alt="frog"

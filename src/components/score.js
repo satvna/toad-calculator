@@ -80,12 +80,12 @@ function Score (props){
     return(
       <div>
         <div style={{display: props.isCropped ? 'block' : 'none'}}>
-          <h2>Sleaze Score:</h2>
+          <h2>Power Level:</h2>
           <h2>{sleaze}%</h2>
           <p>{flavor}</p>
         </div>
         <div style={{display: props.isCropped ? 'none' : 'block'}}>
-          <h3>Upload a toad to determine its level of sleaziness.</h3>
+          <h3>Upload a toad to determine its power level</h3>
         </div>
       </div>
     )

@@ -46,7 +46,6 @@ function App() {
   const [isUploaded, setUploaded] = useState(false);
   const [isCropped, setIsCropped] = useState(false);
 
-
   //control web and mobile display
   const { height, width } = useWindowDimensions();
   const containerDivStyle = {
@@ -70,6 +69,12 @@ function App() {
   const handleOpen = () => setCropModalOpen(true);
   const handleClose = () => setCropModalOpen(false);
   
+  useEffect(() => { //close crop modal after crop button press
+    if (isCropped === true){
+      handleClose();
+    }
+  }, [isCropped]);
+
   //Modal Styling
   const style = {
         position: 'absolute',
@@ -105,7 +110,7 @@ function App() {
 
        {/* TITLE */}
         <div className="title">
-          <h1>Toad Calculator</h1>
+          <h1>Toad Power Calculator</h1>
         </div>
 
         {/* Crop Modal */}
