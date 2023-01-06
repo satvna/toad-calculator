@@ -91,7 +91,7 @@ function Score (props){
     return(
       <div>
         <div  style={{display: ((props.isCropped == true) && (props.isLoading == false)) ? 'block' : 'none'}}>
-          <h2 className='fade-in-text'>Power Level:</h2>
+          <h2 className='fade-in-text'>Sleze Score:</h2>
           <h2 className='fade-in-text'>{sleaze}%</h2>
           <p className='fade-in-subtext'>{flavor}</p>
         </div>
@@ -99,7 +99,7 @@ function Score (props){
           <h2>Loading...</h2>
         </div>
         <div style={{display: ((props.isCropped == false) && (props.isLoading == false))  ? 'block' : 'none'}}>
-          <h3>Upload a toad to determine its power level</h3>
+          <h3>Upload a toad to determine its sleaze score.</h3>
         </div>
       </div>
     )
