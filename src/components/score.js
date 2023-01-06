@@ -90,9 +90,9 @@ function Score (props){
     return(
       <div>
         <div  style={{display: ((props.isCropped == true) && (props.isLoading == false)) ? 'block' : 'none'}}>
-          <h2 className='fade-in-text'>Sleze Score:</h2>
+          <h2 className='fade-in-text'>Sleaze Score:</h2>
           <h2 className='fade-in-text'>{sleaze}%</h2>
-          <p className='fade-in-subtext'>{flavor}</p>
+          <p className='fade-in-text'>{flavor}</p>
         </div>
         <div style={{display: props.isLoading ? 'block' : 'none'}}>
           <h2>Loading...</h2>
