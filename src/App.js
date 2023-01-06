@@ -45,6 +45,8 @@ function App() {
   const [toad, setToad] = useState([]);
   const [isUploaded, setUploaded] = useState(false);
   const [isCropped, setIsCropped] = useState(false);
+  const [isLoading, setLoading] = useState(""); //flavor text
+
 
   //control web and mobile display
   const { height, width } = useWindowDimensions();
@@ -68,7 +70,7 @@ function App() {
 
   const handleOpen = () => setCropModalOpen(true);
   const handleClose = () => setCropModalOpen(false);
-  
+
   useEffect(() => { //close crop modal after crop button press
     if (isCropped === true){
       handleClose();
@@ -132,13 +134,13 @@ function App() {
 
         {/* UPLOAD  OR  DISPLAY TOAD */}
         <div className="upload">
-          <Upload setIsCropped={setIsCropped} isCropped={isCropped} croppedImage={croppedImage} isUploaded={isUploaded} setUploaded={setUploaded} toad={toad} setToad={setToad} setCropModalOpen={setCropModalOpen}/>
-          
+          <Upload isLoading={isLoading} setIsCropped={setIsCropped} isCropped={isCropped} croppedImage={croppedImage} isUploaded={isUploaded} setUploaded={setUploaded} toad={toad} setToad={setToad} setCropModalOpen={setCropModalOpen}/>
+
         </div>
 
         {/* DISPLAY SLEAZINESS SCORE */}
         <div className="score">
-          <Score isCropped={isCropped} toad={toad} isUploaded={isUploaded}/>
+          <Score isLoading={isLoading} setLoading={setLoading} isCropped={isCropped} toad={toad} isUploaded={isUploaded}/>
         </div>
       </div>
     </div>

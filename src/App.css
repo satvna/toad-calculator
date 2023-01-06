@@ -160,7 +160,7 @@
   margin: auto;
   z-index: 2;
 
-  animation: 2s infinite ease-in-out roll;
+  animation: 3s roll;
 }
 .scanner-bar{
   background: white;
@@ -175,11 +175,8 @@
   0% {
     transform: translateY(0%);
   }
-  50% {
-    transform: translateY(100%);
-  }
   100% {
-    transform: translateY(0%);
+    transform: translateY(100%);
   }
 }
 
@@ -190,4 +187,18 @@
   grid-column: 1/2;
 
   width: 100%
+}
+.fade-in-text {
+  animation: fadeIn 3s;
+}
+.fade-in-subtext {
+  animation: fadeIn2 5s;
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadeIn2 {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }

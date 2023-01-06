@@ -18,7 +18,7 @@ function Upload(props) {
     onDrop: acceptedFiles  => {
       props.setToad(acceptedFiles.map(file => Object.assign(file, {
         preview: URL.createObjectURL(file),
-      })));  
+      })));
       props.setCropModalOpen(true);
       props.setUploaded(true);
       props.setIsCropped(false);
@@ -26,7 +26,7 @@ function Upload(props) {
   });
 
   const loader = () =>{
-    
+
   }
 
   useEffect(() => {
@@ -55,7 +55,7 @@ function Upload(props) {
 
     {/* Toad Display */}
     <div className='drop-box' style={{display: props.isCropped ? 'block' : 'none'}}>
-      <div className='scanner-animation'>
+      <div className='scanner-animation' style={{display: props.isLoading ? 'block' : 'none'}}>
         <div className='scanner-bar'></div>
       </div>
 

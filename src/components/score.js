@@ -6,6 +6,7 @@ function Score (props){
   const [sleaze, setSleaze] = useState(-1); //sleaze %
   const [flavor, setFlavor] = useState(""); //flavor text
 
+
   const calculateSleaze = () =>{
     let myNum = Math.random();
 
@@ -66,25 +67,38 @@ function Score (props){
     return this.flavor;
   }
 
+  const loadingFunction = () =>{
+    if (props.isCropped == true){
+      props.setLoading(true);
+      setTimeout(() => {
+        console.log("Delaying for 3 seconds");
+        props.setLoading(false);
+      }, "3000")
+    }
+  }
+
   //calculate sleaze on toad change
   useEffect(()=>{
     calculateSleaze();
-    setFlavor(flavorText());    
-  }, [props.toad]);
+    loadingFunction();
+  }, [props.isCropped]);
 
   //set flavor text after sleaze is calculate
   useEffect(()=>{
-    setFlavor(flavorText());    
+    setFlavor(flavorText());
   }, [sleaze]);
 
     return(
       <div>
-        <div style={{display: props.isCropped ? 'block' : 'none'}}>
-          <h2>Power Level:</h2>
-          <h2>{sleaze}%</h2>
-          <p>{flavor}</p>
+        <div  style={{display: ((props.isCropped == true) && (props.isLoading == false)) ? 'block' : 'none'}}>
+          <h2 className='fade-in-text'>Power Level:</h2>
+          <h2 className='fade-in-text'>{sleaze}%</h2>
+          <p className='fade-in-subtext'>{flavor}</p>
         </div>
-        <div style={{display: props.isCropped ? 'none' : 'block'}}>
+        <div style={{display: props.isLoading ? 'block' : 'none'}}>
+          <h2>Loading...</h2>
+        </div>
+        <div style={{display: ((props.isCropped == false) && (props.isLoading == false))  ? 'block' : 'none'}}>
           <h3>Upload a toad to determine its power level</h3>
         </div>
       </div>
