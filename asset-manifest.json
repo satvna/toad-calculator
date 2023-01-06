@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/toad-calculator/static/css/main.b83eb7ea.css",
-    "main.js": "/toad-calculator/static/js/main.8db609e5.js",
+    "main.js": "/toad-calculator/static/js/main.2ae03d6b.js",
     "static/js/787.021ae036.chunk.js": "/toad-calculator/static/js/787.021ae036.chunk.js",
     "static/media/frog-dance-frog.gif": "/toad-calculator/static/media/frog-dance-frog.6cba43ac7af91db840b4.gif",
     "index.html": "/toad-calculator/index.html",
     "static/media/green-corner.svg": "/toad-calculator/static/media/green-corner.b313cedbdc76b27b09aeb6fe1840be6c.svg",
     "main.b83eb7ea.css.map": "/toad-calculator/static/css/main.b83eb7ea.css.map",
-    "main.8db609e5.js.map": "/toad-calculator/static/js/main.8db609e5.js.map",
+    "main.2ae03d6b.js.map": "/toad-calculator/static/js/main.2ae03d6b.js.map",
     "787.021ae036.chunk.js.map": "/toad-calculator/static/js/787.021ae036.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b83eb7ea.css",
-    "static/js/main.8db609e5.js"
+    "static/js/main.2ae03d6b.js"
   ]
 }
