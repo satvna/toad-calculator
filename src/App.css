@@ -148,8 +148,15 @@
   align-items: flex-end;
 }
 .info-button{
-  width: 50px;
-  height: 50px;
+  width: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info-button svg{
+  width: 60%;
+  height: 60%;
 }
 .info-button svg:hover{
   color: #8ba71f;

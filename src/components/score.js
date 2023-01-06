@@ -71,7 +71,6 @@ function Score (props){
     if (props.isCropped == true){
       props.setLoading(true);
       setTimeout(() => {
-        console.log("Delaying for 3 seconds");
         props.setLoading(false);
       }, "3000")
     }

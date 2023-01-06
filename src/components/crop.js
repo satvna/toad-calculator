@@ -11,7 +11,7 @@ function CropComponent (props){
     const [zoom, setZoom] = useState(1);
     const [rotation, setRotation] = useState(0);
     const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
-    
+
     const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
         setCroppedAreaPixels(croppedAreaPixels);
       }, []);
@@ -23,7 +23,6 @@ function CropComponent (props){
             croppedAreaPixels,
             rotation
           )
-          console.log('donee', { croppedImage })
           props.setCroppedImage(croppedImage)
           props.setIsCropped(true);
         } catch (e) {
@@ -51,7 +50,7 @@ function CropComponent (props){
                 onZoomChange={setZoom}
                 onRotationChange={setRotation}
             />
-            
+
         </div>
         <div className="crop-btn">
                 <Button
